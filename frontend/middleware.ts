@@ -64,9 +64,10 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/', request.url))
   }
 
-  if (!isPublic && !token) {
-    return NextResponse.redirect(new URL('/login', request.url))
-  }
+  // TEMPORARY: Bypass login requirement for development
+  // if (!isPublic && !token) {
+  //   return NextResponse.redirect(new URL('/login', request.url))
+  // }
 
   if (isAdminPath && !isAdmin) {
     return NextResponse.redirect(new URL('/', request.url))
